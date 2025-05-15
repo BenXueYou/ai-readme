@@ -1,0 +1,40 @@
+页面加载的主要阶段及每个阶段的工作内容：
+
+重定向阶段(Redirect)
+处理HTTP重定向
+性能影响：额外的网络往返时间
+应用缓存阶段(App Cache)
+检查浏览器缓存有效性
+决定是否使用缓存资源
+DNS查询阶段(DNS Lookup)
+解析域名到IP地址
+可能涉及多级DNS查询
+TCP连接阶段(TCP Connection)
+与服务器建立TCP三次握手
+HTTPS还包括TLS协商时间
+请求阶段(Request)
+发送HTTP请求到服务器
+包含请求头和请求体
+响应阶段(Response)
+服务器处理请求并返回响应
+受服务器处理能力和网络影响
+解析DOM阶段(DOM Parsing)
+解析HTML构建DOM树
+遇到CSS/JS会阻塞解析
+加载资源阶段(Resource Load)
+并行加载CSS/JS/图片等资源
+受资源数量和大小影响
+渲染阶段(Rendering)
+计算样式和布局
+执行JavaScript
+绘制页面像素
+加载完成阶段(Load)
+触发DOMContentLoaded事件
+所有资源加载完成后触发load事件
+使用PerformanceNavigationTiming可以精确测量各阶段时间：
+
+fetchStart到domainLookupStart：缓存处理
+domainLookupStart到connectStart：DNS查询
+connectStart到responseEnd：网络请求
+domLoading到domComplete：DOM处理
+domComplete到loadEventEnd：资源加载和渲染
